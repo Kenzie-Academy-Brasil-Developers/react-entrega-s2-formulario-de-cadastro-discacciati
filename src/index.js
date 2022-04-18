@@ -4,10 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 
 ReactDom.render(
   <BrowserRouter>
   <React.StrictMode>
+    <ToastContainer
+            position="bottom-center"
+            autoClose={1500}
+          />
      <App/>
   </React.StrictMode>,
   </BrowserRouter>,

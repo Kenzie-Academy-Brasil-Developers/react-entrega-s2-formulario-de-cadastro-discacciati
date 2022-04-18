@@ -15,25 +15,9 @@ import { Box } from "@mui/system";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Signup = ({setUser, user}) => {
+const Signup = () => {
 
   const history = useHistory();
-  
-  const notify = (type = "success") =>{
-    if (type === "success") {
-      toast.success({
-        msg:"Cadastro realizado com sucesso!",
-        className:"primaryColor",
-        
-      });
-    } else {
-      toast.error({
-        msg:"Cadastro não realizado!",
-        className:"dangerColor",
-      });
-    }
-
-  } 
 
   const schema = yup.object().shape({
     name: yup
@@ -69,9 +53,8 @@ const Signup = ({setUser, user}) => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onRegister = (data) => {
-    setUser(data) // nao usar na requisição da api com state, passar o valor direto e depois setar no state.
-    console.log(user)
-    notify()
+    toast("Cadastro realizado com sucesso!");
+    history.push(`/${data.name}`)
   };
 
  
@@ -147,7 +130,7 @@ const Signup = ({setUser, user}) => {
                 fullWidth 
                 type="submit" 
                 variant="contained" 
-                sx={{ mt: 1, width:"40%"}}
+                sx={{ mt: 1, width:"40%", }}
             >
                 Cadastrar
             </Button>

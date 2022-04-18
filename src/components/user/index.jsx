@@ -5,15 +5,20 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { Container, Button , Typography} from '@mui/material';
 import { Box } from "@mui/system";
+import ImageSucess from "../../assets/images/sucessteam.png"
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
-const User = ({user, setUser}) => {
-  console.log(user);
+
+const User = () => {
 
   const history = useHistory();
+  const params = useParams();
+  console.log(params.name)
 
 
   const clickSair = () => {
-    setUser([])
     history.push("/")
   }
 
@@ -37,20 +42,21 @@ const User = ({user, setUser}) => {
           lineHeight: "30px",
           textAlign: "left",
         }}>
-        <Typography variant="h4">Usuário Cadastrado</Typography>
+        <Typography variant="h4">Bem-vindo {params.name} </Typography>
+        <Card>
+                <CardMedia
+                component="img"
+                image={ImageSucess}
+                alt=""
+              />
+        </Card>
 
-        <Typography variant="p"> Nome de usuário: {user.username}</Typography>
-        <Typography variant="p"> Nome completo: {user.fullname}</Typography>
-        <Typography variant="p"> CPF: {user.cpf}</Typography>
-        <Typography variant="p"> Idade: {user.age}</Typography>
-        <Typography variant="p"> Celular: {user.cellphone}</Typography>
-        <Typography variant="p"> Email: {user.email}</Typography>
         </Box>
         <Button 
           fullWidth 
           variant="contained" 
           sx={{
-            mt: 1, width:"15%",
+            mt: 1, width:"10%",
             marginTop: "5px",
             cursor: "pointer",
             color: "#090909",
@@ -61,7 +67,6 @@ const User = ({user, setUser}) => {
             background: "#e8e8e8",
             border: "1px solid #e8e8e8",
             transition: "all 0.3s",
-            boxShadow: "6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff", 
           }}
           onClick={clickSair}>
             Sair
